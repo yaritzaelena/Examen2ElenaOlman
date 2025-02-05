@@ -22,10 +22,10 @@ jobs:
           cache: gradle
 
       - name: Verificar archivos en el repositorio
-        run: ls -l app
+        run: ls -l
 
       - name: Configurar Gradle Wrapper si no existe
-        working-directory: app
+        
         run: |
           if [ ! -f gradlew ]; then
             echo "gradlew no encontrado, generando wrapper..."
@@ -34,11 +34,11 @@ jobs:
         continue-on-error: true
 
       - name: Dar permisos de ejecución a gradlew
-        working-directory: app
+        
         run: chmod +x gradlew
 
       - name: Compilar el proyecto con Gradle (Ignorar errores de Lint)
-        working-directory: app
+        
         run: ./gradlew build -x lint --no-daemon
 
   test:
@@ -57,7 +57,7 @@ jobs:
           cache: gradle
 
       - name: Verificar si gradlew existe
-        working-directory: app
+        
         run: |
           if [ ! -f gradlew ]; then
             echo "ERROR: gradlew no encontrado. Agrega el wrapper al repositorio."
@@ -65,11 +65,11 @@ jobs:
           fi
 
       - name: Dar permisos de ejecución a gradlew
-        working-directory: app
+       
         run: chmod +x gradlew
 
       - name: Ejecutar pruebas unitarias con Gradle
-        working-directory: app
+ 
         run: ./gradlew test
 
       - name: Ejecutar pruebas unitarias específicas
