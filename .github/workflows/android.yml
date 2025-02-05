@@ -25,7 +25,6 @@ jobs:
         run: ls -l
 
       - name: Configurar Gradle Wrapper si no existe
-        
         run: |
           if [ ! -f gradlew ]; then
             echo "gradlew no encontrado, generando wrapper..."
@@ -34,11 +33,9 @@ jobs:
         continue-on-error: true
 
       - name: Dar permisos de ejecución a gradlew
-        
         run: chmod +x gradlew
 
       - name: Compilar el proyecto con Gradle (Ignorar errores de Lint)
-        
         run: ./gradlew build -x lint --no-daemon
 
   test:
@@ -57,7 +54,6 @@ jobs:
           cache: gradle
 
       - name: Verificar si gradlew existe
-        
         run: |
           if [ ! -f gradlew ]; then
             echo "ERROR: gradlew no encontrado. Agrega el wrapper al repositorio."
@@ -65,15 +61,13 @@ jobs:
           fi
 
       - name: Dar permisos de ejecución a gradlew
-       
         run: chmod +x gradlew
 
       - name: Ejecutar pruebas unitarias con Gradle
- 
-        run: ./gradlew test
+        run: ./gradlew test --info
 
-      - name: Ejecutar pruebas unitarias específicas
-        run: ./gradlew ExampleUnitTest
+      - name: Ejecutar pruebas unitarias específicas (JUnit)
+        run: ./gradlew testDebugUnitTest --info
 
       - name: Generar reporte de pruebas
         uses: asadmansr/android-test-report-action@v1.2.0
