@@ -1,7 +1,8 @@
 package com.example.examen2;
 
 import org.junit.Test;
-
+import java.util.Arrays;
+import java.util.List;
 import static org.junit.Assert.*;
 
 /**
@@ -128,4 +129,19 @@ public class ExampleUnitTest {
         assertThrows(IllegalArgumentException.class, () -> Calculadora.convertirADestino(10, 5)); // Base no válida
     }
 
+    /**
+     * Prueba Unitaria para metodo Encunetra(Lista, numero)*/
+    // Prueba cuando el elemento está en la lista
+    @Test
+    public void testEncuentra_ElementoPresente() {
+        List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5);
+        assertTrue(Calculadora.Encuentra(lista, 3)); // El número 3 está en la lista
+    }
+
+    // Prueba cuando el elemento NO está en la lista
+    @Test
+    public void testEncuentra_ElementoAusente() {
+        List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5);
+        assertFalse(Calculadora.Encuentra(lista, 10)); // El número 10 no está en la lista
+    }
 }
