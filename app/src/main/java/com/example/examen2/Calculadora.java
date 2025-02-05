@@ -3,20 +3,20 @@ public class Calculadora {
 
     // Método para convertir el número a la base seleccionada (0: Binario, 1: Octal, 2: Decimal, 3: Hexadecimal)
     public static int convertirNumero(String input, int base) {
-        int numero = 0;
+        int num = 0;
         try {
             switch (base) {
                 case 0: // Binario
-                    numero = Integer.parseInt(input, 2);
+                    num = Integer.parseInt(input, 2);
                     break;
                 case 1: // Octal
-                    numero = Integer.parseInt(input, 8);
+                    num = Integer.parseInt(input, 8);
                     break;
                 case 2: // Decimal
-                    numero = Integer.parseInt(input, 10);
+                    num = Integer.parseInt(input, 10);
                     break;
                 case 3: // Hexadecimal
-                    numero = Integer.parseInt(input, 16);
+                    num = Integer.parseInt(input, 16);
                     break;
                 default:
                     throw new NumberFormatException("Base no soportada");
@@ -24,7 +24,7 @@ public class Calculadora {
         } catch (NumberFormatException e) {
             return -1; // Retornar -1 en caso de error en la conversión
         }
-        return numero;
+        return num;
     }
 
     // Método para realizar operaciones matemáticas (suma, resta, multiplicación, división)
