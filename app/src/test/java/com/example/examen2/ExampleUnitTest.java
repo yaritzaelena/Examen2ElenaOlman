@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+    //Olman PU
     // Pruebas para convertirNumero
     @Test
     public void testConvertirNumero_Binario_Valido() {
@@ -62,14 +63,69 @@ public class ExampleUnitTest {
     public void testConvertirADestino_Octal() {
         assertEquals("12", Calculadora.convertirADestino(10, 1)); // 10 decimal = 12 en octal
     }
-
-    @Test
-    public void testConvertirADestino_Decimal() {
-        assertEquals("10", Calculadora.convertirADestino(10, 2)); // 10 decimal = 10 en decimal
-    }
+    
 
     @Test
     public void testConvertirADestino_Hexadecimal() {
         assertEquals("a", Calculadora.convertirADestino(10, 3)); // 10 decimal = "a" en hexadecimal
     }
+
+    //Elena PU
+    @Test
+    public void testConvertirNumero_Binario() {
+        assertEquals(10, Calculadora.convertirNumero("1010", 0)); // 1010 (Binario) = 10 (Decimal)
+    }
+
+    @Test
+    public void testConvertirNumero_Hexadecimal() {
+        assertEquals(255, Calculadora.convertirNumero("FF", 3)); // FF (Hexadecimal) = 255 (Decimal)
+    }
+
+    @Test
+    public void testConvertirNumero_Invalido() {
+        assertEquals(-1, Calculadora.convertirNumero("2", 0)); // Error: "2" no es un número binario válido
+    }
+
+    @Test
+    public void testConvertirNumero_Null() {
+        assertEquals(-1, Calculadora.convertirNumero(null, 2)); // Error: entrada nula
+    }
+
+    // Pruebas para realizarOperacion()
+    @Test
+    public void testRealizarOp_Suma() {
+        assertEquals(15, Calculadora.realizarOperacion(10, 5, "+")); // 10 + 5 = 15
+    }
+
+    @Test
+    public void testRealizarOperacion_Division() {
+        assertEquals(2, Calculadora.realizarOperacion(10, 5, "/")); // 10 / 5 = 2
+    }
+
+    @Test
+    public void testRealizarOp_DivisionPorCero() {
+        assertThrows(ArithmeticException.class, () -> Calculadora.realizarOperacion(10, 0, "/"));
+    }
+
+    @Test
+    public void testRealizarOperacion_OperadorNoSoportado() {
+        assertThrows(IllegalArgumentException.class, () -> Calculadora.realizarOperacion(10, 5, "%"));
+    }
+
+    // Pruebas para convertirADestino()
+    @Test
+    public void testConvertirADestino_Bin() {
+        assertEquals("1010", Calculadora.convertirADestino(10, 0)); // 10 (Decimal) = 1010 (Binario)
+    }
+
+    @Test
+    public void testConvertirADestino_Hexa() {
+        assertEquals("ff", Calculadora.convertirADestino(255, 3)); // 255 (Decimal) = FF (Hexadecimal)
+    }
+
+    @Test
+    public void testConvertirADestino_BaseNoSoportada() {
+        assertThrows(IllegalArgumentException.class, () -> Calculadora.convertirADestino(10, 5)); // Base no válida
+    }
+
 }
