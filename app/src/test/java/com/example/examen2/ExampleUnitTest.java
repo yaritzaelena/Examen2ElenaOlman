@@ -93,9 +93,16 @@ public class ExampleUnitTest {
     }
 
     // Pruebas para realizarOperacion()
+    /*
     @Test
     public void testRealizarOp_Suma() {
         assertEquals(15, Calculadora.realizarOperacion(10, 5, "+")); // 10 + 5 = 15
+    }*/
+    /**
+     * Error intencional en las pruebas*/
+    @Test
+    public void testRealizarOp_Suma() {
+        assertEquals(15, Calculadora.realizarOperacion(11, 5, "+")); // 10 + 5 = 15
     }
 
     @Test
