@@ -29,20 +29,20 @@ public class Calculadora {
 
     // Método para realizar operaciones matemáticas (suma, resta, multiplicación, división)
     public static int realizarOperacion(int num1, int num2, String operador) {
-        int resultado = 0;
+        int result = 0;
         switch (operador) {
             case "+":
-                resultado = num1 + num2;
+                result = num1 + num2;
                 break;
             case "-":
-                resultado = num1 - num2;
+                result = num1 - num2;
                 break;
             case "*":
-                resultado = num1 * num2;
+                result = num1 * num2;
                 break;
             case "/":
                 if (num2 != 0) {
-                    resultado = num1 / num2;
+                    result = num1 / num2;
                 } else {
                     throw new ArithmeticException("División por 0");
                 }
