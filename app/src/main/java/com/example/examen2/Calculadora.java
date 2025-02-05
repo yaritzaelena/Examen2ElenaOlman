@@ -50,7 +50,7 @@ public class Calculadora {
             default:
                 throw new IllegalArgumentException("Operador no soportado");
         }
-        return resultado;
+        return result;
     }
 
     // Método para convertir un número decimal a cualquier base (0: Binario, 1: Octal, 2: Decimal, 3: Hexadecimal)
